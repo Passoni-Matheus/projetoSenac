@@ -1,0 +1,56 @@
+body{
+
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.list-nav{
+    list-style: none;
+}
+
+/*alterações da left-sidebar*/
+.left-sidebar{
+    color: #4872AB;
+    font-size: 24px;
+    text-decoration: none;
+    flex-basis: 25%;
+    position: sticky;
+    top: 10px;
+    align-self: flex-start;
+}
+
+/*alterações da right-sidebar*/
+.right-sidebar{
+    color: #4872AB;
+    padding-top: 50px;
+    font-size: 24px;
+    text-decoration: none;
+    flex-basis: 25%;
+    position: sticky;
+    top: 10px;
+    align-self: flex-start;
+}
+
+/*alterações da main-content*/
+.main-content{
+    flex-basis: 47%;
+}
+
+/*alterações das opções na left-sidebar*/
+.hover:hover{
+    background-color: #FFAD5A;
+    color: white;
+    transition-duration: 0.3s;
+    border-radius:20px;
+    padding: 18px;
+}
+
+.card{
+    justify-content: center;
+    align-items: center;
+}
