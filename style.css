@@ -3,6 +3,15 @@ body{
     margin: 0;
 }
 
+.center{
+    text-align: center;
+    font-size: 35px;
+}
+
+.center-flex{
+    
+}
+
 .container{
     display: flex;
     justify-content: space-between;
@@ -16,21 +25,24 @@ body{
 /*alterações da left-sidebar*/
 .left-sidebar{
     color: #4872AB;
-    font-size: 24px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     flex-basis: 25%;
     position: sticky;
     top: 10px;
     align-self: flex-start;
+    padding-left: 8px;
 }
 
 /*alterações da right-sidebar*/
 .right-sidebar{
     color: #4872AB;
     padding-top: 50px;
-    font-size: 24px;
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
     text-decoration: none;
-    flex-basis: 25%;
+    flex-basis: 20%;
     position: sticky;
     top: 10px;
     align-self: flex-start;
@@ -38,19 +50,25 @@ body{
 
 /*alterações da main-content*/
 .main-content{
-    flex-basis: 47%;
+    flex-basis: 50%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header-top{
+background-color: white;
+    padding-top: 25px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 0px;
 }
 
 /*alterações das opções na left-sidebar*/
 .hover:hover{
-    background-color: #FFAD5A;
-    color: white;
+    box-shadow: 3px 0px #4872AB;
+    border-bottom-right-radius: 2px;
+    background-color: rgb(248, 247, 247);
+    color: #FFAD5A;
     transition-duration: 0.3s;
-    border-radius:20px;
-    padding: 18px;
-}
-
-.card{
-    justify-content: center;
-    align-items: center;
+    /*border-radius:15px;*/
+    padding: 8px;
 }
