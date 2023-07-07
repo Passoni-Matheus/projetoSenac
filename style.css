@@ -175,3 +175,26 @@ body{
     font-size: 15px;
 }
 
+/*CSS da página de configurações*/
+
+.font-config{
+    color: #4872AB;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+    flex-basis: 18%;
+    position: sticky;
+    top: 10px;
+    align-self: flex-start;
+    padding-left: 4px;
+}
+
+.Sfont-config{
+    font-family: 'Montserrat', sans-serif;
+    color: #FFAD5A;
+}
+
+.font-info{
+    font-size: 10px;
+    color: darkgray;
+}
