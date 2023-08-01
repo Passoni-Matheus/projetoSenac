@@ -56,7 +56,7 @@
 					<input size="57" name="titulo" type="text" id="titulo" placeholder="Título" maxlength="50">
 				</div>	
 				<br>
-					<textarea name="descricao" cols="64" rows="8" maxlength="320" id="descricao" placeholder="Descrição"></textarea>
+					<textarea name="descricao" cols="64" rows="8" maxlength="320" id="descricao" placeholder="Descrição" class="font-config"></textarea>
 				<div class="col-xl-12" style="text-align: center">
 				<select>
 				<?php do {?>
