@@ -63,44 +63,36 @@ $totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
 	
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/11e272b574.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="container">
     <!--início barra esquerda-->
     <div class="row">
-        <div class="col-xl-3">
+        <div class="col-xl-3 col-lg-4 col-md-5">
             <?php include("_barra-esquerda.php"); ?>
         </div>
         <!--Inicio conteúdo-->
-        <div class="col-xl-6">
+        <div class="col-xl-6 col-lg-7 col-md-7">
             <div class="container main-content flex">
                 <div class="card">
-                    <div class=" card-header header-top">
-                        <div>Home</div>
-                        <div>
-                        <nav class="navbar navbar-light bg-light flexbar">
-                            <form class="form-inline">
-                                <input class="form-control mr-sm-2" style="width: 427px;" type="search" placeholder="Pesquisar"
-                                     aria-label="Pesquisar">
-                            </form>
-                        </nav>
-                            </div>
-                        <div class="row font-center">
-                            <div class="col-xl-5">Para você</div>
-                            <div class="col-xl-2">|</div>
-                            <div class="col-xl-5">Em alta</div>
+                    <div class=" card-header top-bar header-top">
+                        <div class="row">
+							<div class="col-xl-1"></div>
+							<div class="col-xl-4 col-lg-4 col-md-5 ctr">Para você</div>
+							<div class="col-xl-2 col-lg-4 col-md-2 ctr">|</div>
+							<div class="col-xl-4 col-lg-4 col-md-5 ctr">Para você</div>
+							<div class="col-xl-1"></div>
+						</div>
+						<div class="col-xl-12">
 						</div>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+					<div>
                     <?php include("_conteudo.php");?>
                 </div>
             </div>
         </div>
+		</div>
         <!--Inicio barra direita-->
         <div class="col-xl-3 margem-top">
 

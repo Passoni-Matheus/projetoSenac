@@ -9,6 +9,18 @@
     padding-left: 4px;
 }
 
+.top-bar{
+	background-color: #ECECEC;
+	color: #4872AB;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    text-decoration: none;
+	text-align: center;
+    top: 10px;
+	position: sticky;
+    padding-left: 4px;
+}
+
 .margem-top{
     margin-top: 65px;
 }
@@ -90,7 +102,7 @@
     background-color: white;
     padding-top: 25px;
     padding-bottom: 10px;
-    position: fixed;
+    position: sticky;
     top: 0px;
     z-index: 99;
 }
@@ -180,6 +192,68 @@
 	
 }
 
-.button-submit {
-	border-radius: 100px;
+.primeira:first-child {
+  background-color: white;
+}
+
+.segunda:last-child {
+  position: relative;
+}
+
+/* col-xl */
+@media all and (min-width:992px) and (max-width: 1199px){
+
+	.right-sidebar{
+	font-size: 0px;
+	padding: 0px;
+	opacity: 0;
+	float: none;
+	border: 0px;
+	display: none;
+}
+	
+}
+
+
+/* col-lg */
+@media all and (min-width:768px) and (max-width: 991px){
+	
+	.nome-usuario{
+		font-size: 12px;
+	}
+	
+	.nome-usuario-2{
+		font-size: 12px;
+	}
+	
+	.data{
+		font-size: 8px;
+	}
+	
+	.card-text{
+		font-size: 13px;
+	}
+	
+	.right-sidebar{
+	font-size: 0px;
+	padding: 0px;
+	opacity: 0;
+	float: none;
+	border: 0px;
+	display: none;
+}
+	
+}
+
+/* col-md */
+@media all and (min-width:576px) and (max-width: 767px){
+	
+	
+}
+
+/* col-sm */
+@media all and (min-width:361px) and (max-width: 575px){
+	
+	
+
 }
