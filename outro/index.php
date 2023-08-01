@@ -1,6 +1,5 @@
 <?php require_once("conexaobd.php");?>
 <?php
-//começo post
 $query_rs_post = "SELECT * from tb_posts inner join tb_usuarios on tb_posts.idUsuario = tb_usuarios.idUsuario inner join tb_imagens on tb_posts.idImagem = tb_imagens.idImagem inner join tb_categoria on tb_posts.idCategoria = tb_categoria.idCategoria where tb_posts.ativo = 1 and tb_posts.evento = 0";
 
 $rs_post = mysqli_query($conn_bd_senac, $query_rs_post) or die(mysqli_error($conn_bd_senac));
@@ -9,21 +8,9 @@ $row_rs_post = mysqli_fetch_assoc($rs_post);
 
 $totalRow_rs_post = mysqli_num_rows($rs_post);
 
-//fim post
 
-//começo consulta categoria
 
-$query_rs_categoria = "SELECT * FROM tb_categoria";
 
-$rs_categoria = mysqli_query($conn_bd_senac, $query_rs_categoria) or die(mysqli_error($conn_bd_senac));
-
-$row_rs_categoria = mysqli_fetch_assoc($rs_categoria);
-
-$totalRow_rs_categoria = mysqli_num_rows($rs_categoria);
-
-//fim categoria
-
-//começo consulta evento
 
 $query_rs_evento = "SELECT * from tb_posts inner join tb_usuarios on tb_posts.idUsuario = tb_usuarios.idUsuario inner join tb_imagens on tb_posts.idImagem = tb_imagens.idImagem inner join tb_categoria on tb_posts.idCategoria = tb_categoria.idCategoria where tb_posts.ativo = 1 and tb_posts.evento = 1 order by tb_posts.idPost DESC LIMIT 2;";
 
@@ -32,21 +19,6 @@ $rs_evento = mysqli_query($conn_bd_senac, $query_rs_evento) or die(mysqli_error(
 $row_rs_evento = mysqli_fetch_assoc($rs_evento);
 
 $totalRow_rs_evento = mysqli_num_rows($rs_evento);
-
-//fim consulta evento
-
-
-//começo consulta imagem
-
-$query_rs_imagem = "SELECT * FROM tb_imagens";
-
-$rs_imagem = mysqli_query($conn_bd_senac, $query_rs_imagem) or die(mysqli_error($conn_bd_senac));
-
-$row_rs_imagem = mysqli_fetch_assoc($rs_imagem);
-
-$totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
-
-//fim consulta imagem
 
 ?>
 
@@ -71,11 +43,12 @@ $totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
         <div class="col-xl-3 col-lg-4 col-md-5">
             <?php include("_barra-esquerda.php"); ?>
         </div>
+		
         <!--Inicio conteúdo-->
         <div class="col-xl-6 col-lg-7 col-md-7">
             <div class="container main-content flex">
                 <div class="card">
-                    <div class=" card-header top-bar header-top">
+                    <div class="card-body top-bar header-top">
                         <div class="row">
 							<div class="col-xl-1"></div>
 							<div class="col-xl-4 col-lg-4 col-md-5 ctr">Para você</div>
@@ -86,12 +59,13 @@ $totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
 						<div class="col-xl-12">
 						</div>
                     </div>
+					<hr>
 					<div>
                     <?php include("_conteudo.php");?>
+						</div>
                 </div>
             </div>
         </div>
-		</div>
         <!--Inicio barra direita-->
         <div class="col-xl-3 margem-top">
 
