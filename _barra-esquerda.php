@@ -41,7 +41,7 @@
 						  } ?>"><?php echo($row_rs_post['nome'])?></div>
 				
       
-			<form>
+			<form method="post" enctype="multipart/form-data">
 				<hr>
 
 				<div class="col-xl-12" style="text-align: center">
@@ -53,17 +53,29 @@
 				</div>
 				<br>
 				<div class="col-xl-12">
-					<input size="57" name="titulo" type="text" id="titulo" placeholder="Título" maxlength="50">
+					<input size="57" name="titulo" type="text" id="titulo" placeholder="Título" maxlength="50" required="required">
 				</div>	
 				<br>
-					<textarea name="descricao" cols="64" rows="8" maxlength="320" id="descricao" placeholder="Descrição"></textarea>
+				<div style="padding-left: 2px">
+					<textarea name="descricao" cols="64" rows="8" maxlength="320" id="descricao" placeholder="Descrição" required="required"></textarea>
+				</div>
+				<br>
+				<br>
 				<div class="col-xl-12" style="text-align: center">
-				<select>
+					<input size="57" name="videos" type="text" id="videos" placeholder="URL do Video" maxlength="50">
+					<p style="text-align: center; font-size: 14px;">PS: Coloque somente URL do Youtube.</p>
+				</div>
+				<div class="col-xl-12" style="text-align: center">
+					<br>
+				<select name="imagem" id="imagem">
 				<?php do {?>
 				<option value="<?php echo($row_rs_imagem['idImagem'])?>"><?php echo($row_rs_imagem['fotoThumb'])?></option>
 					<?php } while($row_rs_imagem = mysqli_fetch_assoc($rs_imagem));?>
 				</select>
+					
 				</div>
+				
+				
 			</div>
 </div>
       <!-- Modal footer -->

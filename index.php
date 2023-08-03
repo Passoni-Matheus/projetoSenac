@@ -1,7 +1,7 @@
 <?php require_once("conexaobd.php");?>
 <?php
 //começo post
-$query_rs_post = "SELECT * from tb_posts inner join tb_usuarios on tb_posts.idUsuario = tb_usuarios.idUsuario inner join tb_imagens on tb_posts.idImagem = tb_imagens.idImagem inner join tb_categoria on tb_posts.idCategoria = tb_categoria.idCategoria where tb_posts.ativo = 1 and tb_posts.evento = 0";
+$query_rs_post = "SELECT * from tb_posts inner join tb_usuarios on tb_posts.idUsuario = tb_usuarios.idUsuario inner join tb_imagens on tb_posts.idImagem = tb_imagens.idImagem inner join tb_categoria on tb_posts.idCategoria = tb_categoria.idCategoria where tb_posts.ativo = 1 and tb_posts.evento = 0 order by tb_posts.idPost DESC";
 
 $rs_post = mysqli_query($conn_bd_senac, $query_rs_post) or die(mysqli_error($conn_bd_senac));
 
@@ -48,6 +48,26 @@ $totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
 
 //fim consulta imagem
 
+//inicio adicionar post
+
+if(isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['videos']) && isset($_POST['categoria']) && isset($_POST['imagem'])) {
+	$titulo = $_POST['titulo'];
+	$descricao = $_POST['descricao'];
+	$videos = $_POST['videos'];
+	$categoria = $_POST['categoria'];
+	$imagem = $_POST['imagem'];
+
+
+$query_rs_post = "INSERT INTO tb_posts (idPost, idUsuario, titulo, descricao, dataCad, videos, evento, vote, ativo, idCategoria, idImagem) VALUES (NULL, '3', '$titulo', '$descricao', current_timestamp(), '$videos', '0', '0', '1', '$categoria', '$imagem');";
+
+$rs_post = mysqli_query($conn_bd_senac, $query_rs_post) or die(mysqli_error($conn_bd_senac));
+	
+	header("Location: index.php");
+}
+
+
+//fim adicionar post
+
 ?>
 
 <!DOCTYPE html>
@@ -68,39 +88,30 @@ $totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
 <body class="container">
     <!--início barra esquerda-->
     <div class="row">
-        <div class="col-xl-3">
+        <div class="col-xl-3 col-lg-4 col-md-5">
             <?php include("_barra-esquerda.php"); ?>
         </div>
         <!--Inicio conteúdo-->
-        <div class="col-xl-6">
+        <div class="col-xl-6 col-lg-7 col-md-7">
             <div class="container main-content flex">
                 <div class="card">
-                    <div class=" card-header header-top">
-                        <div>Home</div>
-                        <div>
-                        <nav class="navbar navbar-light bg-light flexbar">
-                            <form class="form-inline">
-                                <input class="form-control mr-sm-2" style="width: 427px;" type="search" placeholder="Pesquisar"
-                                     aria-label="Pesquisar">
-                            </form>
-                        </nav>
-                            </div>
-                        <div class="row font-center">
-                            <div class="col-xl-5">Para você</div>
-                            <div class="col-xl-2">|</div>
-                            <div class="col-xl-5">Em alta</div>
+                    <div class=" card-header top-bar header-top">
+                        <div class="row">
+							<div class="col-xl-1"></div>
+							<div class="col-xl-4 col-lg-4 col-md-5 ctr">Para você</div>
+							<div class="col-xl-2 col-lg-4 col-md-2 ctr">|</div>
+							<div class="col-xl-4 col-lg-4 col-md-5 ctr">Para você</div>
+							<div class="col-xl-1"></div>
+						</div>
+						<div class="col-xl-12">
 						</div>
                     </div>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+					<div>
                     <?php include("_conteudo.php");?>
                 </div>
             </div>
         </div>
+		</div>
         <!--Inicio barra direita-->
         <div class="col-xl-3 margem-top">
 
