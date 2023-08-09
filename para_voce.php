@@ -1,10 +1,5 @@
-<?php 
-include("sessao_verifica.php");
-require_once("conexaobd.php");
-?>
+<?php require_once("conexaobd.php");?>
 <?php
-
-
 //começo post
 $query_rs_post = "SELECT * from tb_posts inner join tb_usuarios on tb_posts.idUsuario = tb_usuarios.idUsuario inner join tb_imagens on tb_posts.idImagem = tb_imagens.idImagem inner join tb_categoria on tb_posts.idCategoria = tb_categoria.idCategoria where tb_posts.ativo = 1 and tb_posts.evento = 0 order by tb_posts.idPost DESC";
 
@@ -16,38 +11,6 @@ $totalRow_rs_post = mysqli_num_rows($rs_post);
 
 //fim post
 
-
-$sessao_logado = $_SESSION['idUsuario'];
-
-
-//começo consulta logado
-
-$query_rs_logado = "SELECT * FROM tb_usuarios inner join tb_generos on tb_usuarios.idGenero = tb_generos.idGenero where tb_usuarios.suspenso = 0 and tb_usuarios.idUsuario = $sessao_logado";
-
-$rs_logado = mysqli_query($conn_bd_senac, $query_rs_logado) or die(mysqli_error($conn_bd_senac));
-
-$row_rs_logado = mysqli_fetch_assoc($rs_logado);
-
-//fim consulta logado
-
-
-//inicio adicionar post
-
-if(isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['videos']) && isset($_POST['categoria']) && isset($_POST['imagem'])) {
-	$titulo = $_POST['titulo'];
-	$descricao = $_POST['descricao'];
-	$videos = $_POST['videos'];
-	$categoria = $_POST['categoria'];
-	$imagem = $_POST['imagem'];
-	
-
-
-$query_rs_post = "INSERT INTO tb_posts (idPost, idUsuario, titulo, descricao, dataCad, videos, evento, vote, ativo, idCategoria, idImagem) VALUES (NULL, '$sessao_logado', '$titulo', '$descricao', current_timestamp(), '$videos', '0', '0', '1', '$categoria', '$imagem');";
-
-$rs_post = mysqli_query($conn_bd_senac, $query_rs_post) or die(mysqli_error($conn_bd_senac));
-	
-header("Location: index.php");
-}
 //começo consulta categoria
 
 $query_rs_categoria = "SELECT * FROM tb_categoria";
@@ -84,6 +47,26 @@ $row_rs_imagem = mysqli_fetch_assoc($rs_imagem);
 $totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
 
 //fim consulta imagem
+
+//inicio adicionar post
+
+if(isset($_POST['titulo']) && isset($_POST['descricao']) && isset($_POST['videos']) && isset($_POST['categoria']) && isset($_POST['imagem'])) {
+	$titulo = $_POST['titulo'];
+	$descricao = $_POST['descricao'];
+	$videos = $_POST['videos'];
+	$categoria = $_POST['categoria'];
+	$imagem = $_POST['imagem'];
+
+
+$query_rs_post = "INSERT INTO tb_posts (idPost, idUsuario, titulo, descricao, dataCad, videos, evento, vote, ativo, idCategoria, idImagem) VALUES (NULL, '3', '$titulo', '$descricao', current_timestamp(), '$videos', '0', '0', '1', '$categoria', '$imagem');";
+
+$rs_post = mysqli_query($conn_bd_senac, $query_rs_post) or die(mysqli_error($conn_bd_senac));
+	
+	header("Location: index.php");
+}
+
+
+//fim adicionar post
 
 ?>
 
@@ -132,9 +115,9 @@ $totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
                     <div class=" card-header top-bar header-top">
                         <div class="row barra">
 							<div class="col-xl-1"></div>
-							<div class="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-5 ctr"><a href="index.php" style="color: #ffad5a; text-decoration: none" class="mudar !important">Para você</div></a>
+							<div class="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-5 ctr"><a href="#" style="color: #4872ab; text-decoration: none">Para você</a></div>
 							<div class="col-xl-2 col-lg-4 col-md-2 col-sm-2 col-2 ctr">|</div>
-							<div class="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-5 ctr"><a href="em_alta.php" style="color: #4872ab; text-decoration: none" class="mudar !important">Em Alta</div></a>
+							<div class="col-xl-4 col-lg-4 col-md-5 col-sm-5 col-5 ctr"><a href="#" style="color: #4872ab; text-decoration: none">Em alta</a></div>
 							<div class="col-xl-1"></div>
 						</div>
 						</div>
@@ -144,6 +127,7 @@ $totalRow_rs_imagem = mysqli_num_rows($rs_imagem);
                 </div>
             </div>
         </div>
+		
         <!--Inicio barra direita-->
         <div class="col-xl-3 margem-top">
 

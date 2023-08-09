@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Tempo de geração: 23-Jun-2023 às 16:53
--- Versão do servidor: 10.4.27-MariaDB
--- versão do PHP: 8.2.0
+-- Host: robb0463.publiccloud.com.br:3306
+-- Tempo de geração: 04/08/2023 às 09:10
+-- Versão do servidor: 5.6.37-82.2-log
+-- Versão do PHP: 5.6.14
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,22 +19,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `senacchat`
+-- Banco de dados: `ctsdigital2011_senacchat`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_categoria`
+-- Estrutura para tabela `tb_categoria`
 --
 
 CREATE TABLE `tb_categoria` (
   `idCategoria` int(11) NOT NULL,
   `categoria` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_categoria`
+-- Despejando dados para a tabela `tb_categoria`
 --
 
 INSERT INTO `tb_categoria` (`idCategoria`, `categoria`) VALUES
@@ -54,28 +55,28 @@ INSERT INTO `tb_categoria` (`idCategoria`, `categoria`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_chat`
+-- Estrutura para tabela `tb_chat`
 --
 
 CREATE TABLE `tb_chat` (
   `idChat` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `dataCad` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_generos`
+-- Estrutura para tabela `tb_generos`
 --
 
 CREATE TABLE `tb_generos` (
   `idGenero` int(11) NOT NULL,
   `genero` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_generos`
+-- Despejando dados para a tabela `tb_generos`
 --
 
 INSERT INTO `tb_generos` (`idGenero`, `genero`) VALUES
@@ -87,27 +88,30 @@ INSERT INTO `tb_generos` (`idGenero`, `genero`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_imagens`
+-- Estrutura para tabela `tb_imagens`
 --
 
 CREATE TABLE `tb_imagens` (
   `idImagem` int(11) NOT NULL,
-  `idPost` int(11) NOT NULL,
   `foto` varchar(255) NOT NULL,
   `fotoThumb` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_imagens`
+-- Despejando dados para a tabela `tb_imagens`
 --
 
-INSERT INTO `tb_imagens` (`idImagem`, `idPost`, `foto`, `fotoThumb`) VALUES
-(1, 0, 'foto-g.jpg', 'foto-p.jpg');
+INSERT INTO `tb_imagens` (`idImagem`, `foto`, `fotoThumb`) VALUES
+(1, 'aula-biologia.jpg', 'aula-biologia.jpg'),
+(2, 'camaleao.jpg', 'camaleao.jpg'),
+(3, 'ideia.jpg', 'ideia.jpg'),
+(4, 'vendingmachine.jpg', 'vendingmachine.jpg'),
+(5, 'tech.jpg', 'tech.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_loginadm`
+-- Estrutura para tabela `tb_loginadm`
 --
 
 CREATE TABLE `tb_loginadm` (
@@ -115,10 +119,10 @@ CREATE TABLE `tb_loginadm` (
   `email` varchar(255) DEFAULT NULL,
   `senha` varchar(255) DEFAULT NULL,
   `nome` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_loginadm`
+-- Despejando dados para a tabela `tb_loginadm`
 --
 
 INSERT INTO `tb_loginadm` (`idLoginAdm`, `email`, `senha`, `nome`) VALUES
@@ -127,41 +131,46 @@ INSERT INTO `tb_loginadm` (`idLoginAdm`, `email`, `senha`, `nome`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_posts`
+-- Estrutura para tabela `tb_posts`
 --
 
 CREATE TABLE `tb_posts` (
   `idPost` int(11) NOT NULL,
   `idUsuario` int(11) NOT NULL,
   `titulo` varchar(255) DEFAULT NULL,
+  `descricao` varchar(255) NOT NULL,
   `dataCad` datetime NOT NULL,
   `videos` varchar(255) DEFAULT NULL,
-  `evento` tinyint(1) NOT NULL DEFAULT 0,
-  `vote` int(11) DEFAULT NULL,
+  `evento` tinyint(1) NOT NULL DEFAULT '0',
+  `vote` int(11) DEFAULT '0',
+  `ativo` tinyint(1) NOT NULL DEFAULT '1',
   `idCategoria` int(11) NOT NULL,
   `idImagem` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_posts`
+-- Despejando dados para a tabela `tb_posts`
 --
 
-INSERT INTO `tb_posts` (`idPost`, `idUsuario`, `titulo`, `dataCad`, `videos`, `evento`, `vote`, `idCategoria`, `idImagem`) VALUES
-(1, 3, 'Técnologia em internet nas coisas', '2023-06-06 14:09:01', 'qDBFFZkRFDA', 0, NULL, 11, 1);
+INSERT INTO `tb_posts` (`idPost`, `idUsuario`, `titulo`, `descricao`, `dataCad`, `videos`, `evento`, `vote`, `ativo`, `idCategoria`, `idImagem`) VALUES
+(1, 3, 'Técnologia em internet nas coisas', 'A tecnologia da internet nas coisas é muito importante', '2023-06-06 14:09:01', 'qDBFFZkRFDA', 0, 0, 1, 11, 2),
+(2, 4, 'CSS: Sobre', 'SOU BEM DISCRETO', '2023-07-27 16:22:54', NULL, 0, 0, 1, 11, 3),
+(3, 3, 'Máquinas de doces', 'SENAC apresenta máquina de doces inovadora: personalização de sabores e opções saudáveis para satisfazer todos os gostos. Delicie-se com essa nova experiência! #SENACSweetMachine', '2023-07-27 16:42:42', NULL, 1, 0, 1, 6, 4),
+(4, 4, 'Techevent', 'SENAC promove evento tecnológico: palestras, workshops e demonstrações de novas tendências e inovações para impulsionar o setor. Imperdível para profissionais e entusiastas da área! #SENACTechEvent', '2023-07-27 16:51:22', NULL, 1, 0, 1, 6, 5);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_uf`
+-- Estrutura para tabela `tb_uf`
 --
 
 CREATE TABLE `tb_uf` (
   `idUf` int(11) NOT NULL,
   `estado` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_uf`
+-- Despejando dados para a tabela `tb_uf`
 --
 
 INSERT INTO `tb_uf` (`idUf`, `estado`) VALUES
@@ -196,7 +205,7 @@ INSERT INTO `tb_uf` (`idUf`, `estado`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `tb_usuarios`
+-- Estrutura para tabela `tb_usuarios`
 --
 
 CREATE TABLE `tb_usuarios` (
@@ -206,76 +215,78 @@ CREATE TABLE `tb_usuarios` (
   `fotoPerfil` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `senha` varchar(255) NOT NULL,
+  `posto` tinyint(1) NOT NULL DEFAULT '0',
   `idUf` int(11) NOT NULL,
+  `suspenso` tinyint(1) NOT NULL DEFAULT '0',
   `telefone` varchar(255) NOT NULL,
   `nascimento` date NOT NULL,
   `idGenero` int(11) NOT NULL,
   `informacoes` varchar(255) NOT NULL,
   `ip` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `tb_usuarios`
+-- Despejando dados para a tabela `tb_usuarios`
 --
 
-INSERT INTO `tb_usuarios` (`idUsuario`, `dataCad`, `nome`, `fotoPerfil`, `email`, `senha`, `idUf`, `telefone`, `nascimento`, `idGenero`, `informacoes`, `ip`) VALUES
-(3, '2023-06-06 13:35:02', 'Gustavo Rodrigues de Sousa', 'Gustavo.jpg', 'gurosousa6@gmail.com', 'betoneirajaca22', 20, '(11) 96066-6840', '2004-10-30', 1, 'Sou uma pessoa maneira', ''),
-(4, '2023-06-06 13:35:02', 'Matheus Santos Passoni', 'Matheus.jpg', 'kcranel@outlook.com', 'Mudar#123', 20, '(11)94071-8665', '2002-05-31', 1, '', '');
+INSERT INTO `tb_usuarios` (`idUsuario`, `dataCad`, `nome`, `fotoPerfil`, `email`, `senha`, `posto`, `idUf`, `suspenso`, `telefone`, `nascimento`, `idGenero`, `informacoes`, `ip`) VALUES
+(3, '2023-06-06 13:35:02', 'Gustavo Rodrigues de Sousa', 'professor.png', 'gurosousa6@gmail.com', 'betoneirajaca22', 0, 20, 0, '(11) 96066-6840', '2004-10-30', 1, 'Sou uma pessoa maneira', ''),
+(4, '2023-06-06 13:35:02', 'Matheus Santos Passoni', 'aluno.png', 'kcranel@outlook.com', 'Mudar#123', 0, 20, 0, '(11) 94071-8665', '2002-05-31', 1, '', '');
 
 --
--- Índices para tabelas despejadas
+-- Índices de tabelas apagadas
 --
 
 --
--- Índices para tabela `tb_categoria`
+-- Índices de tabela `tb_categoria`
 --
 ALTER TABLE `tb_categoria`
   ADD PRIMARY KEY (`idCategoria`);
 
 --
--- Índices para tabela `tb_chat`
+-- Índices de tabela `tb_chat`
 --
 ALTER TABLE `tb_chat`
   ADD PRIMARY KEY (`idChat`);
 
 --
--- Índices para tabela `tb_generos`
+-- Índices de tabela `tb_generos`
 --
 ALTER TABLE `tb_generos`
   ADD PRIMARY KEY (`idGenero`);
 
 --
--- Índices para tabela `tb_imagens`
+-- Índices de tabela `tb_imagens`
 --
 ALTER TABLE `tb_imagens`
   ADD PRIMARY KEY (`idImagem`);
 
 --
--- Índices para tabela `tb_loginadm`
+-- Índices de tabela `tb_loginadm`
 --
 ALTER TABLE `tb_loginadm`
   ADD PRIMARY KEY (`idLoginAdm`);
 
 --
--- Índices para tabela `tb_posts`
+-- Índices de tabela `tb_posts`
 --
 ALTER TABLE `tb_posts`
   ADD PRIMARY KEY (`idPost`);
 
 --
--- Índices para tabela `tb_uf`
+-- Índices de tabela `tb_uf`
 --
 ALTER TABLE `tb_uf`
   ADD PRIMARY KEY (`idUf`);
 
 --
--- Índices para tabela `tb_usuarios`
+-- Índices de tabela `tb_usuarios`
 --
 ALTER TABLE `tb_usuarios`
   ADD PRIMARY KEY (`idUsuario`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT de tabelas apagadas
 --
 
 --
@@ -300,7 +311,7 @@ ALTER TABLE `tb_generos`
 -- AUTO_INCREMENT de tabela `tb_imagens`
 --
 ALTER TABLE `tb_imagens`
-  MODIFY `idImagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idImagem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de tabela `tb_loginadm`
@@ -312,7 +323,7 @@ ALTER TABLE `tb_loginadm`
 -- AUTO_INCREMENT de tabela `tb_posts`
 --
 ALTER TABLE `tb_posts`
-  MODIFY `idPost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idPost` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de tabela `tb_uf`
